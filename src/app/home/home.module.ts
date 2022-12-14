@@ -1,3 +1,4 @@
+import { MessagesModule } from './../components/messages/messages.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -12,7 +13,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     HomeRoutingModule,
-    FormsModule
+    FormsModule,
+    MessagesModule
   ],
   exports: [HomeComponent]
 })
