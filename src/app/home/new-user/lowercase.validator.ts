@@ -5,7 +5,7 @@ export function lowercaseValidator(control: AbstractControl) {
   if (value !== value.toLowerCase()) {
     return { lowercase: true};
   } else {
-    return null;
+    return { lowercase: false};
   }
 
 }
