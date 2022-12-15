@@ -5,12 +5,16 @@
 <form class="form mt-4" [formGroup]="newUserForm" (submit)="signUp()">
   <div class="form-group">
     <input type="text" class="form-control" placeholder="e-mail" formControlName="email">
+    <app-messages *ngIf="newUserForm.get('email')?.errors?.required && newUserForm.get('email')?.touched" message="E-mail obrigatório"></app-messages>
+    <app-messages *ngIf="newUserForm.get('email')?.errors?.email && newUserForm.get('email')?.touched" message="E-mail inválido"></app-messages>
   </div>
   <div class="form-group">
     <input type="text" class="form-control" placeholder="Nome Completo" formControlName="fullName">
+    <app-messages *ngIf="newUserForm.get('fullName')?.errors && newUserForm.get('fullName')?.touched" message="Nome incorreto"></app-messages>
   </div>
   <div class="form-group">
     <input type="text" class="form-control" placeholder="Usuário" formControlName="userName">
+    <app-messages *ngIf="newUserForm.get('userName')?.errors?.lowercase && newUserForm.get('userName')?.touched" message="Usuário deve ser em letras minúsculas"></app-messages>
   </div>
   <div class="form-group">
     <input type="password" class="form-control" placeholder="Senha" formControlName="password">
