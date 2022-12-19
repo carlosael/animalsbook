@@ -11,7 +11,7 @@ const API = environment.apiURL;
 export class AnimalComponent implements OnInit {
   private originalUrl = '';
 
-  @Input() descricao = '';
+  @Input() description = '';
 
   @Input() set url(url: string) {
     if (url.startsWith('data')) {
