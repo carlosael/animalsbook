@@ -1,4 +1,4 @@
-import { environment } from './../../environments/environment';
+import { environment } from 'src/environments/environment';
 import { TokenService } from './../authentication/token.service';
 import { Animals } from './animal';
 import { Observable } from 'rxjs';

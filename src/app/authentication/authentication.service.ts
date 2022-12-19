@@ -1,4 +1,4 @@
-import { environment } from './../../environments/environment';
+import { environment } from 'src/environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -11,8 +11,6 @@ const API = environment.apiURL;
   providedIn: 'root',
 })
 export class AuthenticationService {
-  private url = API;
-
   constructor(
     private httpClient: HttpClient,
     private userService: UserService
@@ -21,7 +19,7 @@ export class AuthenticationService {
   authenticate(user: string, password: string): Observable<HttpResponse<any>> {
     return this.httpClient
       .post(
-        this.url,
+        `${API}/user/login`,
         {
           userName: user,
           password: password,

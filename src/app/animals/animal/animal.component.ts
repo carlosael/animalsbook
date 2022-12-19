@@ -1,4 +1,4 @@
-import { environment } from './../../../environments/environment';
+import { environment } from 'src/environments/environment';
 import { Component, Input, OnInit } from '@angular/core';
 
 const API = environment.apiURL;
