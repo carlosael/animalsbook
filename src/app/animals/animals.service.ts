@@ -1,11 +1,13 @@
 import { environment } from 'src/environments/environment';
 import { TokenService } from './../authentication/token.service';
 import { Animal, Animals } from './animal';
-import { Observable } from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable, of, throwError } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { catchError, mapTo } from 'rxjs/operators';
 
 const API = environment.apiURL;
+const NOT_MODIFIED = '304';
 
 @Injectable({
   providedIn: 'root',
@@ -22,5 +24,20 @@ export class AnimalsService {
 
   searchById(id: number): Observable<Animal> {
     return this.httpClient.get<Animal>(`${API}/photos/${id}`);
+  }
+
+  deletePhoto(id: number): Observable<Animal> {
+    return this.httpClient.delete<Animal>(`${API}/photos/${id}`);
+  }
+
+  likePhoto(id: number): Observable<boolean> {
+    return this.httpClient
+      .post(`${API}/photos/${id}/like`, {}, { observe: 'response' })
+      .pipe(
+        mapTo(true),
+        catchError((error) => {
+          return error.status === NOT_MODIFIED ? of(false) : throwError(error);
+        })
+      );
   }
 }
