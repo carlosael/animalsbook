@@ -17,6 +17,13 @@
           animal.comments
         }}</i>
       </small>
+
+      <app-comments [id]="animalId" *ngIf="animal.allowComments; else warning">
+      </app-comments>
+
+      <ng-template #warning>
+        <p>Usuário não pode comentar o animal</p>
+      </ng-template>
     </div>
   </div>
 </div>
