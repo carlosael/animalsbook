@@ -1,5 +1,4 @@
-import { ReactiveFormsModule } from '@angular/forms';
-import { MessagesModule } from './../components/messages/messages.module';
+import { SharedModule } from './../shared/shared.module';
 import { CardModule } from './../components/card/card.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -19,12 +18,6 @@ import { CommentsComponent } from './animal-detail/comments/comments.component';
     AnimalDetailComponent,
     CommentsComponent,
   ],
-  imports: [
-    CommonModule,
-    AnimalsRoutingModule,
-    CardModule,
-    MessagesModule,
-    ReactiveFormsModule,
-  ],
+  imports: [CommonModule, AnimalsRoutingModule, CardModule, SharedModule],
 })
 export class AnimalsModule {}
