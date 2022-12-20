@@ -17,16 +17,10 @@ export class AnimalsService {
   ) {}
 
   userList(userName: string): Observable<Animals> {
-    const token = this.tokenService.returnToken();
-    const headers = new HttpHeaders().append('x-access-token', token);
-    return this.httpClient.get<Animals>(`${API}/${userName}/photos`, {
-      headers,
-    });
+    return this.httpClient.get<Animals>(`${API}/${userName}/photos`);
   }
 
   searchById(id: number): Observable<Animal> {
-    const token = this.tokenService.returnToken();
-    const headers = new HttpHeaders().append('x-access-token', token);
-    return this.httpClient.get<Animal>(`${API}/photos/${id}`, { headers });
+    return this.httpClient.get<Animal>(`${API}/photos/${id}`);
   }
 }
